@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jasmine Test Runner</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="src/editor.css">
+    <script src="lib/jquery-1.7.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/markdown.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/rangy-core.js" type="text/javascript" charset="utf-8"></script>
+    <script src="lib/rangy-selectionsaverestore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="src/editor.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      $(function(){
+          var render = $('#markdown-render');
+          $('#editor').mkEditor({});
+
+          $('div.editable').bind('change', function(){
+            render.html(window.markdown.toMarkdown(this));
+          });
+
+          $('div.editable').keyup(function(){
+            $(this).trigger('change')
+          });
+
+          $('.mkEditor .toolbar button').click(function(){
+            $('div.editable').trigger('change')
+          });
+      })
+    </script>
+    <textarea id="editor"></textarea>
+    <pre id="markdown-render">
+    </pre>
+  </body>
+</html>

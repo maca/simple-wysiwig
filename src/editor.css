@@ -1,0 +1,9 @@
+.mkEditor .editable {
+  width: 300px;
+  height: 300px;
+  border: solid 1px silver;
+}
+
+.mkEditor div {
+  margin-bottom: 10px;
+}
